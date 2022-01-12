@@ -2,6 +2,19 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #111111;
+    color: #ffffff;
+    font-family: 'Arial', 'sans-serif';
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
 header {
     text-align: center;
+}
+
+section > p {
+    margin-left: 2rem;
 }
