@@ -8,7 +8,116 @@ body {
   padding: 0;
 }
 
+/*For testing
+body {
+  background-color: yellow;
+}*/
+
 .logo > img {
   width: 50px;
+  margin: 0.5rem;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+header > h1 {
+  margin: 0.5rem;
+}
+
+nav {
+  background-color: gray;
+  color: white;
+  display: flex;
+  height: 2rem;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: 0.5rem 0.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+.menu {
+  display: flex;
+  padding: 0 0;
+  height: 2rem;
+  align-items: center;
+}
+
+.menu > * {
+  list-style: none;
+  padding: 0 0.5rem;
+}
+
+.social {
+  display: flex;
+  padding: 0 0;
+  justify-content: space-around;
+}
+
+.social > * {
+  list-style: none;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product {
+  border: solid 1px lightgray;
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem 0.5rem;
+  width: 30vw;
+}
+
+.product > h2 {
+  text-align: center;
+}
+
+.product > i {
+  display: block;
+  text-align: center;
+}
+
+footer {
+  border-top: solid 1px lightgray;
+}
+
+/* Tablet */
+@media only screen and (max-width: 801px) {
+  /*For testing
+  body {
+    background-color: orange;
+  }*/
+  main {
+    flex-direction: column;
+  }
+  .product {
+    width: auto;
+  }
+  .menu {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Smartphone */
+@media only screen and (max-width: 480px) {
+  header {
+    flex-direction: column;
+  }
+  /*For testing
+  body {
+    background-color: red;
+  }*/
+}
