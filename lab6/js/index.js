@@ -3,7 +3,11 @@ function start() {
     $(".agregar").click(function(e){
         e.preventDefault();
         
-        const todoText = $("#newText").val();
+        const todoText = $("#newText").val().trim();
+
+        if (todoText === "") {return;}
+
+        $("#newText").val("")
         
         const todoElem = $(`<li class="lis"></li>`)
         .append($(`<div class="itemShop"></div>`).text(todoText))
