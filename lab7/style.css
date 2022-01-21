@@ -5,6 +5,7 @@ body {
 
 #animals {
   width: 70%;
+  display: grid;
 }
 
 .animal-item {
