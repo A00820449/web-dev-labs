@@ -5,11 +5,11 @@ body {
 
 #animals {
   width: 70%;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .animal-item {
-  float: left;
   padding: 10px;
 }
 
