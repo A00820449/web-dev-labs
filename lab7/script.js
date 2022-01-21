@@ -38,7 +38,7 @@ function loadImages(){
                 .append(
                     $(`<div class="animal-item"></div>`)
                     .append($(`<p></p>`).text(`Rating: ${gifData.rating}`))
-                    .append($(`<img still="true"/>`).attr("src", gifData.images.original_still.url).attr("gify-id", gifData.id).attr("alt", gifData.title))
+                    .append($(`<img still="true"/>`).attr("src", gifData.images.fixed_height_still.url).attr("gify-id", gifData.id).attr("alt", gifData.title).attr("draggable", false))
                 );
             }
         }
@@ -64,7 +64,7 @@ function animalToggle() {
             success(res){
                 console.log(res);
                 img.attr("still", "true");
-                img.attr("src", res.data.images.original_still.url);
+                img.attr("src", res.data.images.fixed_height_still.url);
                 img.attr("alt", res.data.title)
             },
             error: requestError
@@ -76,7 +76,7 @@ function animalToggle() {
             success(res){
                 console.log(res);
                 img.attr("still", "false");
-                img.attr("src", res.data.images.original.url);
+                img.attr("src", res.data.images.fixed_height.url);
                 img.attr("alt", res.data.title)
             },
             error: requestError
