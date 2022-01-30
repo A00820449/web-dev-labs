@@ -43,7 +43,7 @@
             Table Reservation
           </div>
           <div class="card-body">
-            <form role="form">
+            <form role="form" id="submitForm">
               <div class="form-group">
                 <label for="reserve-name">Name</label>
                 <input type="text" class="form-control" id="reserve-name">
@@ -77,6 +77,26 @@
     </footer>
 
   </div>
+  <script>
+    $("#submitForm").on("submit", function(event){
+      console.log('Event fired');
+      event.preventDefault();
+      const name = $("#reserve-name").val();
+      const phone = $("#reserve-phone").val();
+      const email = $("#reserve-email").val();
+
+      console.log({name, phone, email});
+      $.ajax({type:"POST", url: "/api/reserve", data: JSON.stringify({name, phone, email}), contentType: "application/json; charset=utf-8", dataType: "json"})
+      .then((data)=>{
+        if (data.response >= 0) {
+          window.alert("Congratulations!\nYour reservation was succesful.");
+        }
+        else {
+          window.alert("You've been put on the waitlist.");
+        }
+      });
+    });
+  </script>
 
 </body>
 

@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 
 const app = express();
@@ -37,6 +38,23 @@ app.get("/api/clear", (req,res)=>{
     waitlistTables = [];
     res.json({response: "Cleared all tables"})
 })
+
+app.use(express.json());
+app.post("/api/reserve", (req,res)=>{
+    const name = req.body.name || "";
+    const phone = req.body.phone || "";
+    const email = req.body.email || "";
+
+    if (reservedTables.length < 5) {
+        reservedTables.push({name, phone, email});
+        return res.json({response: reservedTables.length});
+    }
+    else {
+        waitlistTables.push({name, phone, email});
+        return res.json({response: -1});
+    }
+
+});
 
 app.listen(PORT,()=>{
     console.log(`Listening on port:`, PORT);
