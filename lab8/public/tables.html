@@ -58,7 +58,7 @@
     <footer class="footer mt-4">
       <div class="container">
         <p>Control Panel</p>
-        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API
+        <p><a href="/api/clear" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API
             Wait List</a>
       </div>
     </footer>
@@ -70,9 +70,37 @@
 
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
+  // Reserved Tables
+  $.ajax({url:"/api/tables", async: false})
+  .then((res)=>{
+    const reservedListDiv = $("#tableList");
+    
+    for (let i = 0; i < res.length; i++) {
+      let tableElem = $(`<li class="list-group-item mt-4"></li>`)
+      .append($(`<h2></h2>`).text(`Table #${i + 1}`))
+      .append($(`<hr/>`))
+      .append($(`<h2></h2>`).text(`Name: ${res[i].name}`))
+      .append($(`<h2></h2>`).text(`Phone: ${res[i].phone}`))
+      .append($(`<h2></h2>`).text(`E-mail: ${res[i].email}`))
 
+      reservedListDiv.append(tableElem);
+    }
+  });
 
+  // Waiting list
+  $.ajax({url:"/api/waitlist", async: false})
+  .then((res)=>{
+    const reservedListDiv = $("#waitList");
+    
+    for (let i = 0; i < res.length; i++) {
+      let tableElem = $(`<li class="list-group-item mt-4"></li>`)
+      .append($(`<h2></h2>`).text(`Name: ${res[i].name}`))
+      .append($(`<h2></h2>`).text(`Phone: ${res[i].phone}`))
+      .append($(`<h2></h2>`).text(`E-mail: ${res[i].email}`))
 
+      reservedListDiv.append(tableElem);
+    }
+  });
 
 </script>
 

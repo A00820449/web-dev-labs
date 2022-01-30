@@ -7,6 +7,8 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -16,7 +18,7 @@
     <div class="jumbotron">
       <h1 class="text-center"><span class="fa fa-fire"></span> Hot Restaurant</h1>
       <hr>
-      <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
+      <h2 class="text-center">We only have <span id="tableCount">0</span> tables left! Book your seat before they all are gone!</h2>
       <br>
 
       <div class="text-center">
@@ -33,7 +35,12 @@
     </footer>
 
   </div>
-
+  <script>
+    $.ajax({url:"/api/tables"})
+    .then((data)=>{
+      $("#tableCount").text(5 - data.length);
+    })
+  </script>
 
 </body>
 </html>
